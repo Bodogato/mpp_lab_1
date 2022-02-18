@@ -1,15 +1,10 @@
-const int p_size = 45, repeatLimit = 100, maxWords = 100000; 
-
-
-
 var fullText = new string[maxWords];
 var text_checker = new int[maxWords , repeatLimit];
-
 var curr_char = 0;
-
 var page_indet = 1;
 var count_line = 0;
 var lineIndet = "";
+const int p_size = 45, repeatLimit = 100, maxWords = 100000;
 var text_reader = new StreamReader("TheText_insert.txt");
 
 start:
@@ -48,7 +43,6 @@ start:
 				inn_char++;
 				goto dup_word_check;
 	
-			
 			next_page:
 				var inn_page_char = 0;
 				
@@ -65,7 +59,6 @@ start:
 					inn_page_char++;
 					goto next_page_loop;
 				
-
 			page_insert_num:
 				fullText[curr_char] = curWord;
 				var page_insert_num_ind = 0;
@@ -105,7 +98,6 @@ start:
 				inn_char++;
 				goto dup_word_check;
 	
-			
 			next_page:
 				var inn_page_char = 0;
 				
@@ -122,7 +114,6 @@ start:
 					inn_page_char++;
 					goto next_page_loop;
 				
-
 			page_insert_num:
 				fullText[curr_char] = curWord;
 				var page_insert_num_ind = 0;
@@ -169,8 +160,6 @@ start:
 		char_index++;
 		goto split_func_op;
 
-
-
 	split_func_cl:
 		int out_counter = 0;
 		var a = new string[curr_char];
@@ -178,7 +167,6 @@ start:
 		var b = new int[a.Length];
 
 	int counter = 0;
-
 	loop_fill:
 		b[counter] = counter;
 		a[counter] = fullText[counter];
@@ -204,6 +192,7 @@ start:
 		{
 			n = bS.Length;
 		}
+
 		int comp_counter = 0;
 		comp_lp:
 		if(aS[comp_counter] > bS[comp_counter])
@@ -224,7 +213,6 @@ start:
 
 		if(comp_rez)
 		{
-
 			string temp = "";
 			int tempIndex = 0;
 	
@@ -235,7 +223,6 @@ start:
 			tempIndex = b[out_counter];
 			b[out_counter] = b[inn_counter];
 			b[inn_counter] = tempIndex;
-
 		}
 		if(inn_counter++ < a.Length - 1)	
 			goto inn_lp;
@@ -250,7 +237,6 @@ sort_cl:
 	var curr_char_concat = 0;
 	
 	concat_loop:
-
 		outter_string = "";
 		if(curr_char_concat == curr_char - 1)
 			goto end;
@@ -263,7 +249,7 @@ sort_cl:
 		concat_inn_lp:
 			if (text_checker[trans_list_index, count_page] != 0)
 			{
-				outter_string += text_checker[trans_list_index, count_page] +  " ";
+				outter_string += text_checker[trans_list_index, count_page] + " ";
 				count_page++;
 				goto concat_inn_lp;
 			}
